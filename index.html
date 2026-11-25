@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush Kumar | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8fc;
+            color: #172033;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: .25;
+            z-index: -1;
+            pointer-events: none;
+            animation: orb 10s ease-in-out infinite alternate;
+        }
+
+        body::before {
+            background: #8ed0ff;
+            top: 10%;
+            left: -100px
+        }
+
+        body::after {
+            background: #b9e4ff;
+            right: -100px;
+            bottom: 5%;
+            animation-delay: 2s
+        }
+
+        @keyframes orb {
+            to {
+                transform: translate(40px, -30px) scale(1.12)
+            }
+        }
+
+        nav {
+            width: 100%;
+            padding: 18px 8%;
+            background: rgba(255, 255, 255, .88);
+            backdrop-filter: blur(14px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(23, 105, 170, .08);
+            animation: navIn .7s ease both;
+        }
+
+        @keyframes navIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1769aa;
+            letter-spacing: -1px
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px
+        }
+
+        .nav-links a {
+            position: relative;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 4px 0
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: #1769aa;
+            transition: .35s
+        }
+
+        .nav-links a:hover::after {
+            width: 100%
+        }
+
+        .nav-links a:hover {
+            color: #1769aa
+        }
+
+        section {
+            padding: 90px 8%
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 50px
+        }
+
+        .hero-card {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 65px;
+            background: rgba(255, 255, 255, .9);
+            border: 1px solid rgba(255, 255, 255, .8);
+            border-radius: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 25px 70px rgba(23, 50, 80, .10);
+            animation: heroIn 1s cubic-bezier(.2, .8, .2, 1) both;
+        }
+
+        @keyframes heroIn {
+            from {
+                opacity: 0;
+                transform: translateY(35px) scale(.98)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .hero-text {
+            max-width: 620px
+        }
+
+        .small-title {
+            color: #1769aa;
+            font-weight: 800;
+            letter-spacing: 3px;
+            font-size: 13px
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            margin: 12px 0
+        }
+
+        .hero h2 {
+            color: #1769aa;
+            font-size: 25px;
+            margin-bottom: 15px
+        }
+
+        .hero-text p {
+            color: #667085;
+            font-size: 17px
+        }
+
+        .profile {
+            position: relative
+        }
+
+        .profile::before {
+            content: "";
+            position: absolute;
+            inset: -18px;
+            border: 1px solid #b9def7;
+            border-radius: 50%;
+            animation: ring 3s ease-in-out infinite;
+        }
+
+        @keyframes ring {
+            50% {
+                transform: scale(1.06);
+                opacity: .45
+            }
+        }
+
+        .profile img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid #e6f2ff;
+            position: relative;
+            box-shadow: 0 18px 45px rgba(23, 105, 170, .18);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            background: #1769aa;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            display: inline-block;
+            transition: .35s;
+            box-shadow: 0 8px 20px rgba(23, 105, 170, .18)
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .35), transparent);
+            transform: skewX(-20deg);
+            transition: .6s
+        }
+
+        .btn:hover::before {
+            left: 150%
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(23, 105, 170, .25)
+        }
+
+        .btn:active {
+            transform: scale(.97)
+        }
+
+        .btn.outline {
+            background: transparent;
+            color: #1769aa;
+            border: 2px solid #1769aa
+        }
+
+        .btn.outline:hover {
+            background: #1769aa;
+            color: white
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px
+        }
+
+        .section-title p {
+            color: #1769aa;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-top: 5px
+        }
+
+        .card-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .92);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(23, 105, 170, .06);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .055);
+            transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s, border-color .45s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 22px 48px rgba(23, 50, 80, .13);
+            border-color: #cce9fb;
+        }
+
+        .about-card {
+            max-width: 900px;
+            margin: auto
+        }
+
+        .about-card h3 {
+            font-size: 25px;
+            margin-bottom: 15px
+        }
+
+        .about-card p,
+        .skill-card p,
+        .project-card p,
+        .interest-card p {
+            color: #667085;
+            margin-bottom: 7px
+        }
+
+        .icon,
+        .interest-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            transition: .45s
+        }
+
+        .skill-card:hover .icon,
+        .interest-card:hover .interest-icon {
+            transform: translateY(-5px) scale(1.12) rotate(3deg)
+        }
+
+        .skill-card {
+            text-align: center
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px
+        }
+
+        .education-card {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            gap: 25px;
+            align-items: center
+        }
+
+        .education-icon {
+            font-size: 50px;
+            animation: float 4s ease-in-out infinite
+        }
+
+        .education-card h3 {
+            font-size: 22px
+        }
+
+        .education-card h4 {
+            color: #1769aa;
+            margin: 5px 0
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 3px;
+            background: #1769aa;
+            transition: .55s
+        }
+
+        .project-card:hover::before {
+            left: 0
+        }
+
+        .project-number {
+            color: #1769aa;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin: 15px 0
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0
+        }
+
+        .tags span {
+            background: #eaf5ff;
+            color: #1769aa;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            transition: .3s
+        }
+
+        .tags span:hover {
+            transform: translateY(-2px)
+        }
+
+        .project-link {
+            color: #1769aa;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: .35s
+        }
+
+        .project-link:hover {
+            transform: translateX(7px)
+        }
+
+        .interest-card {
+            text-align: center
+        }
+
+        .contact-card {
+            max-width: 700px;
+            margin: auto;
+            text-align: center
+        }
+
+        .contact-card h3 {
+            font-size: 28px
+        }
+
+        .contact-card p {
+            color: #667085;
+            margin: 10px 0 25px
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap
+        }
+
+        .social-buttons a {
+            text-decoration: none;
+            background: #1769aa;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            transition: .35s
+        }
+
+        .social-buttons a:hover {
+            transform: translateY(-4px)
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity .8s ease, transform .8s cubic-bezier(.2, .8, .2, 1)
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: none
+        }
+
+        .stagger .card {
+            opacity: 0;
+            transform: translateY(25px)
+        }
+
+        .stagger.active .card {
+            opacity: 1;
+            transform: none
+        }
+
+        .stagger.active .card:nth-child(1) {
+            transition-delay: .05s
+        }
+
+        .stagger.active .card:nth-child(2) {
+            transition-delay: .12s
+        }
+
+        .stagger.active .card:nth-child(3) {
+            transition-delay: .19s
+        }
+
+        .stagger.active .card:nth-child(4) {
+            transition-delay: .26s
+        }
+
+        footer {
+            background: #172033;
+            color: white;
+            text-align: center;
+            padding: 40px 20px
+        }
+
+        footer p {
+            color: #b8c1d1
+        }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 13px
+        }
+
+        @media(max-width:768px) {
+            nav {
+                padding: 15px 5%
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            section {
+                padding: 65px 5%
+            }
+
+            .hero-card {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 45px 25px;
+                gap: 35px
+            }
+
+            .hero h1 {
+                font-size: 42px
+            }
+
+            .profile img {
+                width: 190px;
+                height: 190px
+            }
+
+            .buttons {
+                justify-content: center
+            }
+
+            .section-title h2 {
+                font-size: 30px
+            }
+
+            .education-card {
+                flex-direction: column;
+                text-align: center
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Piyush.</div>
+        <div class="nav-links">
+            <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+            <a href="#education">Education</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-card">
+            <div class="hero-text">
+                <p class="small-title">HELLO, I'M</p>
+                <h1>Piyush Kumar</h1>
+                <h2>B.Tech CSE Student</h2>
+                <p>I am a Computer Science student interested in Web Development, Java, Python and Data Structures. I
+                    enjoy building projects and learning new technologies.</p>
+                <div class="buttons">
+                    <a href="#projects" class="btn">View Projects</a>
+                    <a href="#contact" class="btn outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="profile"><img src="pp.png" alt="Piyush Kumar"></div>
+        </div>
+    </section>
+
+    <section id="about" class="reveal">
+        <div class="section-title">
+            <p>GET TO KNOW ME</p>
+            <h2>About Me</h2>
+        </div>
+        <div class="card about-card">
+            <h3>Hello! I'm Piyush </h3>
+            <p>I am a B.Tech Computer Science Engineering student with an interest in programming and web development.
+            </p>
+            <p>Currently, I am improving my skills in HTML, CSS, JavaScript, Java, Python and Data Structures.</p>
+            <p>My goal is to become a skilled software developer and build useful real-world projects.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="reveal stagger">
+        <div class="section-title">
+            <p>WHAT I KNOW</p>
+            <h2>My Skills</h2>
+        </div>
+        <div class="card-container">
+            <div class="card skill-card">
+                <div class="icon"></div>
+                <h3>Programming</h3>
+                <p>C</p>
+                <p>Java</p>
+                <p>Python</p>
+            </div>
+            <div class="card skill-card">
+                <div class="icon"></div>
+                <h3>Web Development</h3>
+                <p>HTML</p>
+                <p>CSS</p>
+                <p>JavaScript</p>
+            </div>
+            <div class="card skill-card">
+                <div class="icon"></div>
+                <h3>Computer Science</h3>
+                <p>Data Structures</p>
+                <p>Algorithms</p>
+                <p>Problem Solving</p>
+            </div>
+            <div class="card skill-card">
+                <div class="icon"></div>
+                <h3>Tools</h3>
+                <p>VS Code</p>
+                <p>GitHub</p>
+                <p>Turbo c</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="reveal">
+        <div class="section-title">
+            <p>MY ACADEMIC JOURNEY</p>
+            <h2>Education</h2>
+        </div>
+        <div class="card education-card">
+            <div class="education-icon"></div>
+            <div>
+                <h3>B.Tech – Computer Science Engineering</h3>
+                <h4>MATS University, Raipur</h4>
+                <p>Currently pursuing B.Tech in Computer Science Engineering.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal stagger">
+        <div class="section-title">
+            <p>MY WORK</p>
+            <h2>Projects</h2>
+        </div>
+        <div class="card-container">
+
+            <div class="card project-card">
+                <div class="project-number">PROJECT 01</div>
+                <h3>Personal Portfolio</h3>
+                <p>A responsive personal portfolio website created to showcase my skills, education and projects.</p>
+                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                
+            </div>
+
+            <div class="card project-card">
+                <div class="project-number">PROJECT 02</div>
+                <h3>Movie Recommendation Website</h3>
+                <p>A movie website featuring movie cards, categories, search functionality and movie information.</p>
+                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                
+            </div>
+
+            <div class="card project-card">
+                <div class="project-number">PROJECT 03</div>
+                <h3>Shopping Cart System</h3>
+                <p>A simple shopping cart project for managing products, quantities and total prices.</p>
+                <div class="tags"><span>Java</span><span>Programming</span></div>
+                <a href=" class="project-link"></a>
+            </div>
+
+            <div class="card project-card">
+                <div class="project-number">PROJECT 04</div>
+                <h3>Student Profile Website</h3>
+                <p>A student profile website containing personal information, skills, education and contact details.</p>
+                <div class="tags"><span>HTML</span><span>CSS</span></div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="interests" class="reveal stagger">
+        <div class="section-title">
+            <p>OUTSIDE CODING</p>
+            <h2>Interests</h2>
+        </div>
+        <div class="card-container">
+            <div class="card interest-card">
+                <div class="interest-icon"></div>
+                <h3>Gaming</h3>
+                <p>Enjoy playing games in my free time.</p>
+            </div>
+            <div class="card interest-card">
+                <div class="interest-icon"></div>
+                <h3>Movies</h3>
+                <p>Watch movies in free time.</p>
+            </div>
+            <div class="card interest-card">
+                <div class="interest-icon"></div>
+                <h3>Learning</h3>
+                <p>Always interested in learning new technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <div class="section-title">
+            <p>LET'S CONNECT</p>
+            <h2>Contact Me</h2>
+        </div>
+        <div class="card contact-card">
+            <h3>Let's Connect </h3>
+            <p>Feel free to connect with me through my professional profiles.</p>
+            <div class="social-buttons">
+                <a href="https://github.com/iampiyushh" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/piyush-kumar-9ba61a37b" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Piyush Kumar</h3>
+        <p>B.Tech CSE Student | Aspiring Developer</p>
+        <p class="copyright">© 2026 Piyush Kumar. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const revealElements = document.querySelectorAll(".reveal");
+        function revealOnScroll() {
+            revealElements.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add("active");
+                }
+            });
+        }
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+    </script>
+
+</body>
+
+</html>
